@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeFire Max PC | Google Play Games Beta Emulator Guide</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #f0f0f0;
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 100%);
+            min-height: 100vh;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00ffcc;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00ffcc;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .nav-links a:hover {
+            color: #00ffcc;
+            background-color: rgba(0, 255, 204, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #00ffcc;
+            text-shadow: 0 0 20px #00ffcc;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ffcc, #0099ff);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #00ffcc;
+        }
+        
+        .about-text h3 {
+            color: #00ffcc;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "▶";
+            color: #00ffcc;
+            position: absolute;
+            left: 0;
+        }
+        
+        .emulator-preview {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+            border: 2px solid #00ffcc;
+        }
+        
+        /* Guide Section */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .step {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #00ffcc;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 255, 204, 0.2);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #00ffcc;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        /* System Requirements */
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .requirement-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #00ffcc;
+        }
+        
+        .requirement-card h3 {
+            color: #00ffcc;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .specs-list {
+            list-style: none;
+        }
+        
+        .specs-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: rgba(0, 255, 204, 0.1);
+            border-radius: 5px;
+        }
+        
+        /* Download Section */
+        .download-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .download-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #00ffcc;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff3366, #ff6633);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 2px solid #00ffcc;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: #00ffcc;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px #00ffcc;
+            }
+            50% {
+                text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+            }
+        }
+        
+        .glowing-text {
+            animation: glow 2s infinite;
+        }
+        
+        /* Game Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 255, 204, 0.1);
+            border-radius: 10px;
+            border: 1px solid #00ffcc;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            color: #00ffcc;
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">FreeFire Max PC</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Emulator</a></li>
+                    <li><a href="#guide">Install Guide</a></li>
+                    <li><a href="#requirements">System Requirements</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="glowing-text">FreeFire Max on PC</h1>
+            <p>Official Google Play Games Beta Emulator</p>
+            <p>Play FreeFire Max on PC with Enhanced Graphics & Performance</p>
+            <a href="#download" class="btn">
+                <i class="fas fa-download"></i> Download Now
+            </a>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">60+ FPS</div>
+                    <div>Smooth Gameplay</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4K</div>
+                    <div>Resolution Support</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0 Lag</div>
+                    <div>Optimized Performance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Emulator Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Google Play Games Beta Emulator</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Play Android Games on PC Officially</h3>
+                    <p>Google Play Games Beta is the official Android emulator developed by Google, allowing you to play mobile games like FreeFire Max on your Windows PC with superior performance and graphics.</p>
+                    
+                    <ul class="feature-list">
+                        <li>Official Google Software - Safe & Secure</li>
+                        <li>Optimized for Gaming Performance</li>
+                        <li>Seamless Sync with Mobile Progress</li>
+                        <li>Keyboard & Mouse Support</li>
+                        <li>Higher FPS and Better Graphics</li>
+                        <li>Regular Updates from Google</li>
+                    </ul>
+                    
+                    <p>The emulator is specifically designed for gaming, offering better performance than regular Android emulators with dedicated gaming features.</p>
+                </div>
+                <div>
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Guide -->
+    <section id="guide">
+        <div class="container">
+            <h2>Installation Guide</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Download Emulator</h3>
+                    <p>Download the official Google Play Games Beta emulator from the link below</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Install Software</h3>
+                    <p>Run the installer and follow the setup instructions (requires Windows 10/11)</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Sign In to Google</h3>
+                    <p>Log in with your Google account that has FreeFire Max progress</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Install FreeFire Max</h3>
+                    <p>Search and install FreeFire Max from the Play Store inside the emulator</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Configure Settings</h3>
+                    <p>Adjust graphics settings for optimal performance on your PC</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3>Start Playing</h3>
+                    <p>Launch FreeFire Max and enjoy enhanced PC gaming experience!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Requirements -->
+    <section id="requirements">
+        <div class="container">
+            <h2>System Requirements</h2>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <h3>Minimum Requirements</h3>
+                    <ul class="specs-list">
+                        <li>Windows 10 (v2004 or newer)</li>
+                        <li>Intel i3 8th gen or AMD Ryzen 3 (any series)</li>
+                        <li>8GB RAM</li>
+                        <li>Intel HD Graphics 630</li>
+                        <li>20GB Free Storage</li>
+                        <li>Solid State Drive (SSD)</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h3>Recommended Requirements</h3>
+                    <ul class="specs-list">
+                        <li>Windows 11 (Latest Update)</li>
+                        <li>Intel i5 8th gen or AMD Ryzen 5 (any series)</li>
+                        <li>16GB RAM</li>
+                        <li>NVIDIA GTX 1060 or higher</li>
+                        <li>50GB Free Storage</li>
+                        <li>NVMe SSD</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h3>For Best Experience</h3>
+                    <ul class="specs-list">
+                        <li>Windows 11 22H2 or newer</li>
+                        <li>Intel i7 8th gen or AMD Ryzen 7 (any series)</li>
+                        <li>32GB RAM</li>
+                        <li>NVIDIA RTX 3060 or higher</li>
+                        <li>100GB Free Storage</li>
+                        <li>High-Speed Internet</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <div class="container">
+            <h2>Download Now</h2>
+            <div class="download-options">
+                <div class="download-card">
+    <h3><i class="fab fa-google"></i> Google Play Games Beta</h3>
+    <p>Official PC Emulator from Google</p>
+    <a href="https://play.google.com/googleplaygames" target="_blank" class="download-btn">
+        <i class="fas fa-download"></i> Download from Google
+    </a>
+    <p style="margin-top: 10px; font-size: 0.9rem; color: #00ffcc;">
+        <i class="fas fa-info-circle"></i> Available in 140+ regions[citation:2]
+    </p>
+</div>
+              <div class="download-card">
+    <h3><i class="fas fa-gamepad"></i> FreeFire MAX</h3>
+    <p>Official Game from Garena</p>
+    <a href="https://play.google.com/store/apps/details?id=com.dts.freefiremax" target="_blank" class="download-btn" style="background: linear-gradient(45deg, #ff3366, #ff6633);">
+        <i class="fab fa-google-play"></i> Google Play Store
+    </a>
+    <a href="https://ff.garena.com/" target="_blank" class="download-btn" style="background: linear-gradient(45deg, #3366ff, #6633ff); margin-top: 10px;">
+        <i class="fas fa-globe"></i> Official Website
+    </a>
+</div>
+            
+            <div style="text-align: center; margin-top: 40px; background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px; border: 1px solid #00ffcc;">
+                <h3 style="color: #00ffcc;">Important Notice</h3>
+                <p>Always download from official sources. This website only provides guides and information. The actual downloads should be obtained from Google's official website and the Google Play Store.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>FreeFire Max PC Guide</h3>
+            <p>Unofficial Guide for Playing FreeFire Max on PC using Google Play Games Beta Emulator</p>
+            
+            <div class="social-links">
+                <a href="https://discord.gg/FQD9SEgTuv"><i class="fab fa-discord"></i></a>
+                <a href="https://youtube.com/@doggy69ff"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/doggy_69_yt?igsh=djk2b2c5aDV6Z2Nu"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <p style="margin-top: 20px; color: #00ffcc; font-size: 0.9rem;">
+                Disclaimer: This is a fan-made guide by Doggy69 YT. FreeFire Max is a trademark of Garena. 
+                Google Play Games is a trademark of Google LLC. This website is not affiliated with either company.
+            </p>
+            
+            <p style="margin-top: 10px; font-sifa-githum;">
+                &copy; 2025 FreeFire Max PC Guide. All information provided for educational purposes.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            }
+        });
+
+        // Simple animation for stats
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const finalValue = stat.textContent;
+                let currentValue = 0;
+                const increment = parseInt(finalValue) / 50;
+                
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if(currentValue >= parseInt(finalValue)) {
+                        stat.textContent = finalValue;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(currentValue);
+                    }
+                }, 30);
+            });
+        }
+
+        // Trigger animation when stats are in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe stats section
+        const statsSection = document.querySelector('.stats-grid');
+        if(statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
