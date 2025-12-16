@@ -1,0 +1,9 @@
+particlesJS("particles-js",{
+  particles:{
+    number:{value:80},
+    color:{value:"#ff7a18"},
+    opacity:{value:0.4},
+    size:{value:3},
+    move:{speed:2}
+  }
+});
